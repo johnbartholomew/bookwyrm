@@ -2,13 +2,7 @@
 from fedireads.models import Connector, User
 from fedireads.settings import DOMAIN
 
-User.objects.create_user('mouse', 'mouse.reeve@gmail.com', 'password123')
-User.objects.create_user(
-    'rat', 'rat@rat.com', 'ratword',
-    manually_approves_followers=True
-)
-
-User.objects.get(id=1).followers.add(User.objects.get(id=2))
+User.objects.create_user('jpab', 'jpa.bartholomew@gmail.com', 'booksarefun')
 
 Connector.objects.create(
     identifier='openlibrary.org',
