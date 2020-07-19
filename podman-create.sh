@@ -5,6 +5,7 @@ set -e
 podman pod create --name 'pod-bookwyrm' --hostname='bookwyrm' -p '1333:1333'
 
 podman volume create vol-bookwyrm-postgres
+podman volume create vol-bookwyrm-redis
 podman volume create vol-bookwyrm-media
 podman volume create vol-bookwyrm-static
 
@@ -18,6 +19,7 @@ podman container create \
 podman container create \
   --env-file=.env \
   --pod=pod-bookwyrm \
+  --volume=vol-bookwyrm-redis:/data \
   --name=c-bookwyrm-redis \
   redis
 
